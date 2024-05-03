@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student Registration Form</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    input,
+    select,
+    textarea {
+      width: calc(100% - 22px); /* Adjusted width for better alignment */
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    input[type="reset"] {
+      background-color: #f44336;
+      color: #fff;
+    }
+
+    input[type="reset"]:hover {
+      background-color: #d32f2f;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    /* Improved styling for radio buttons */
+    .radio-group {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    /* Added style for comments textarea */
+    #comments {
+      width: calc(100% - 22px);
+      border-radius: 4px;
+      resize: vertical;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.8em;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Student Registration Form</h2>
+
+  <form id="registrationForm" action="/submit" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" placeholder="First name">
+    <div id="firstNameError" class="error-message"></div>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
+    <div id="lastNameError" class="error-message"></div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <div id="passwordError" class="error-message"></div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <div id="emailError" class="error-message"></div>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+    <div id="dobError" class="error-message"></div>
+
+    <label for="educationStatus">Education Status:</label>
+    <div class="radio-group">
+      <input type="radio" id="student" name="educationStatus" value="student" checked>
+      <label for="student">Student</label>
+    </div>
+    <div class="radio-group">
+      <input type="radio" id="undergraduate" name="educationStatus" value="undergraduate">
+      <label for="undergraduate">Undergraduate</label>
+    </div>
+    <div class="radio-group">
+      <input type="radio" id="postgraduate" name="educationStatus" value="postgraduate">
+      <label for="postgraduate">Postgraduate</label>
+    </div>
+
+    <label for="rollNumber">Roll Number:</label>
+    <input type="text" id="rollNumber" name="rollNumber" placeholder="Student's Roll Number">
+    <div id="rollNumberError" class="error-message"></div>
+
+    <label for="hobbies">Hobbies:</label>
+    <input type="checkbox" id="reading" name="hobbies" value="reading">
+    <label for="reading">Reading</label>
+    <input type="checkbox" id="traveling" name="hobbies" value="traveling">
+    <label for="traveling">Traveling</label>
+    <input type="checkbox" id="sports" name="hobbies" value="sports">
+    <label for="sports">Sports</label>
+
+    <label for="comments">Comments:</label>
+    <textarea id="comments" name="comments" rows="4" placeholder="Enter your comments here..."></textarea>
+
+    <input type="reset" value="Reset">
+    <input type="submit" value="Submit" onclick="return validateForm()">
+  </form>
+
+  <script>
+    function validateForm() {
+      var firstName = document.getElementById('firstName').value.trim();
+      var lastName = document.getElementById('lastName').value.trim();
+      var password = document.getElementById('password').value;
+      var email = document.getElementById('email').value.trim();
+      var dob = document.getElementById('dob').value;
+      var rollNumber = document.getElementById('rollNumber').value.trim();
+
+      var isValid = true;
+
+      // Clear previous error messages
+      clearErrors();
+
+      // Validation for First Name
+      if (!/^[a-zA-Z]+$/.test(firstName)) {
+        displayError('firstNameError', 'First name should contain only alphabets.');
+        isValid = false;
+      }
+
+      // Validation for Last Name
+      if (!/^[a-zA-Z]+$/.test(lastName)) {
+        displayError('lastNameError', 'Last name should contain only alphabets.');
+        isValid = false;
+      }
+
+      // Validation for Password (assumed at least 6 characters)
+      if (password.length < 6) {
+        displayError('passwordError', 'Password should be at least 6 characters long.');
+        isValid = false;
+      }
+
+      // Validation for Email
+      if (!/\S+@\S+\.\S+/.test(email)) {
+        displayError('emailError', 'Invalid email address.');
+        isValid = false;
+      }
+
+      // Validation for Date of Birth
+      if (!dob) {
+        displayError('dobError', 'Date of Birth is required.');
+        isValid = false;
+      }
+
+      // Validation for Roll Number (assumed to be 7-digit numeric value)
+      if (!/^\d{7}$/.test(rollNumber)) {
+        displayError('rollNumberError', 'Roll number should be a 7-digit numeric value.');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    function displayError(elementId, message) {
+      var errorElement = document.getElementById(elementId);
+      errorElement.textContent = message;
+    }
+
+    function clearErrors() {
+      var errorElements = document.querySelectorAll('.error-message');
+      errorElements.forEach(function(element) {
+        element.textContent = '';
+      });
+    }
+  </script>
+</body>
+
+</html>

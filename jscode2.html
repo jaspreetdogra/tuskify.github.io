@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    form:hover {
+      transform: translateY(-5px);
+    }
+
+    div {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus {
+      border-color: #4caf50;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: #fff;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #4caf50;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="calculatorForm">
+    <div>
+      <label for="firstNumber">First Number:</label>
+      <input type="text" id="firstNumber" name="firstNumber" placeholder="Enter first number">
+    </div>
+    <div>
+      <label for="secondNumber">Second Number:</label>
+      <input type="text" id="secondNumber" name="secondNumber" placeholder="Enter second number">
+    </div>
+    <div>
+      <button type="button" onclick="add()">+</button>
+      <button type="button" onclick="subtract()">-</button>
+      <button type="button" onclick="multiply()">*</button>
+      <button type="button" onclick="divide()">/</button>
+      <button type="button" onclick="reset()">Reset</button>
+    </div>
+    <div class="result" id="result"></div>
+  </form>
+
+  <script>
+    function add() {
+      var firstNumber = parseFloat(document.getElementById("firstNumber").value);
+      var secondNumber = parseFloat(document.getElementById("secondNumber").value);
+      if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
+        var result = firstNumber + secondNumber;
+        document.getElementById("result").innerText = "Result of addition: " + result;
+      } else {
+        document.getElementById("result").innerText = "Please enter valid numbers.";
+      }
+    }
+
+    function subtract() {
+      var firstNumber = parseFloat(document.getElementById("firstNumber").value);
+      var secondNumber = parseFloat(document.getElementById("secondNumber").value);
+      if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
+        var result = firstNumber - secondNumber;
+        document.getElementById("result").innerText = "Result of subtraction: " + result;
+      } else {
+        document.getElementById("result").innerText = "Please enter valid numbers.";
+      }
+    }
+
+    function multiply() {
+      var firstNumber = parseFloat(document.getElementById("firstNumber").value);
+      var secondNumber = parseFloat(document.getElementById("secondNumber").value);
+      if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
+        var result = firstNumber * secondNumber;
+        document.getElementById("result").innerText = "Result of multiplication: " + result;
+      } else {
+        document.getElementById("result").innerText = "Please enter valid numbers.";
+      }
+    }
+
+    function divide() {
+      var firstNumber = parseFloat(document.getElementById("firstNumber").value);
+      var secondNumber = parseFloat(document.getElementById("secondNumber").value);
+      if (!isNaN(firstNumber) && !isNaN(secondNumber)) {
+        if (secondNumber !== 0) {
+          var result = firstNumber / secondNumber;
+          document.getElementById("result").innerText = "Result of division: " + result;
+        } else {
+          document.getElementById("result").innerText = "Cannot divide by zero.";
+        }
+      } else {
+        document.getElementById("result").innerText = "Please enter valid numbers.";
+      }
+    }
+
+    function reset() {
+      document.getElementById("firstNumber").value = "";
+      document.getElementById("secondNumber").value = "";
+      document.getElementById("result").innerText = "";
+    }
+  </script>
+</body>
+</html>

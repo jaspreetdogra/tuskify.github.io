@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Images in Webpages Example</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+      color: #333;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+    }
+    .icon:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Images in Webpages Example</h1>
+  </header>
+
+  <div class="container">
+    <!-- Logo -->
+    <div>
+      <img src="images/cookie1.png" alt="Logo">
+    </div>
+
+    <!-- Image in a Table Cell -->
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+      <tr>
+        <td>Product 1</td>
+        <td>Heart shaped Cookies</td>
+        <td>$10</td>
+        <td><img src="images/cookie2.jpeg" alt="Product 1"></td>
+      </tr>
+      <tr>
+        <td>Product 2</td>
+        <td>Multi Gems Cookies</td>
+        <td>$20</td>
+        <td><img src="images/cookie3.jpeg" alt="Product 2"></td>
+      </tr>
+    </table>
+
+    <!-- Background of a Table -->
+    <table>
+      <tr>
+        <td style="background-color: #2c3e50; padding: 20px;">
+          This table has a background color
+        </td>
+      </tr>
+    </table>
+
+    <!-- Clickable Icon -->
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="https://example.com">
+        <img class="icon" src="images/cookie1.png" alt="Icon">
+      </a>
+    </div>
+  </div>
+</body>
+</html>

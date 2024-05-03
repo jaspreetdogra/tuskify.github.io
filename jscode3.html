@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Background Color on Focus</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    input[type="text"].input {
+      padding: 10px 25px;
+      border: 2px solid #8707ff;
+      border-radius: 10px;
+      background: transparent;
+      max-width: 190px;
+      color: #8707ff;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+
+    input[type="text"].input:focus {
+      border-color: #8707ff;
+      box-shadow: 0 0 5px rgba(135, 7, 255, 0.5);
+      background-color: #8707ff;
+      color: #fff;
+    }
+
+    input[type="text"].input:active {
+      box-shadow: 2px 2px 15px rgba(135, 7, 255, 0.5) inset;
+    }
+
+    ::placeholder {
+      color: #ccc;
+    }
+
+    input[type="text"].input:focus::placeholder {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" id="textBox" class="input" placeholder="Type something here...">
+  </div>
+  <script>
+    var textBox = document.getElementById("textBox");
+
+    textBox.addEventListener("focus", function() {
+      textBox.style.backgroundColor = "#8707ff";
+    });
+
+    textBox.addEventListener("blur", function() {
+      textBox.style.backgroundColor = "";
+    });
+  </script>
+</body>
+</html>

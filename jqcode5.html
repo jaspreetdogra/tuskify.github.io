@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mouse Events Demonstration</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        transition: background-color 0.5s;
+    }
+
+    #collegeLink {
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        text-decoration: none;
+        background-color: #007bff;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    #collegeLink:hover {
+        background-color: #0056b3;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+
+<a href="https://sgtbkhalsadu.ac.in/" id="collegeLink">It shows the mouse events</a>
+
+<script>
+$(document).ready(function(){
+    $("#collegeLink").mouseover(function(){
+        $("body").css("background-color", "green");
+        $(this).text("I'm green now");
+    });
+
+    $("#collegeLink").mouseout(function(){
+        $("body").css("background-color", "red");
+        $(this).text("I'm red now");
+    });
+});
+</script>
+
+</body>
+</html>

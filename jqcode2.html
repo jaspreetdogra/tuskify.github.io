@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Selectors Demo</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    div {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+
+    #elementId {
+        color: red;
+    }
+
+    .className {
+        font-weight: bold;
+    }
+
+    [data-custom] {
+        background-color: lightblue;
+    }
+</style>
+</head>
+<body>
+
+<div id="elementId">Element by ID</div>
+<div class="className">Element by Class</div>
+<div>Element by Tag Name</div>
+<div data-custom="attributeValue">Element by Attribute</div>
+
+<script>
+$(document).ready(function(){
+    // JavaScript code remains the same
+    var elementById = $("#elementId");
+    elementById.css("color", "red");
+
+    var elementsByClass = $(".className");
+    elementsByClass.css("font-weight", "bold");
+
+    var elementsByTagName = $("div");
+    elementsByTagName.css("border", "1px solid black");
+
+    var elementsByAttribute = $("[data-custom]");
+    elementsByAttribute.text("Element by Attribute").css("background-color", "lightblue");
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Content and Color</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    #content {
+        color: black;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div id="content">This is the default content.</div>
+<button id="changeColorBtn">Change Color</button>
+<button id="changeContentBtn">Change Content</button>
+
+<script>
+$(document).ready(function(){
+    $("#changeColorBtn").click(function(){
+        $("#content").css("color", "red"); 
+    });
+
+    $("#changeContentBtn").click(function(){
+        $("#content").text("New content here."); 
+    });
+});
+</script>
+
+</body>
+</html>

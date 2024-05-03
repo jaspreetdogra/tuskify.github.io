@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Demonstration</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"], button {
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <input type="text" id="textInput" placeholder="Type here">
+    <button id="clickButton">Click Me</button>
+    <button id="doubleClickButton">Double Click Me</button>
+    <form id="submitForm">
+        <input type="text" id="submitButton" placeholder="Submit on Enter">
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+$(document).ready(function(){
+    // Event handler functions
+    var eventHandlers = {
+        "blur": function(){
+            console.log("Input blurred");
+        },
+        "change": function(){
+            console.log("Input changed to: " + $(this).val());
+        },
+        "focus": function(){
+            console.log("Input focused");
+        },
+        "click": function(){
+            console.log("Button clicked");
+        },
+        "dblclick": function(){
+            console.log("Button double clicked");
+        },
+        "submit": function(event){
+            event.preventDefault();
+            console.log("Form submitted");
+        }
+    };
+
+    $("#textInput").on(eventHandlers);
+    $("#clickButton").on(eventHandlers);
+    $("#doubleClickButton").on(eventHandlers);
+    $("#submitForm").on(eventHandlers);
+});
+</script>
+
+</body>
+</html>
